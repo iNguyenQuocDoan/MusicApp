@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { TiHomeOutline } from "react-icons/ti";
 
 export default function SiderMenu() {
+  const pathName = usePathname();
+  console.log(pathName);
   const menu = [
     {
       icon: <TiHomeOutline />,
@@ -26,7 +31,7 @@ export default function SiderMenu() {
     {
       icon: <TiHomeOutline />,
       title: "Đăng xuất",
-      link: "/home",
+      link: "/logout",
     },
     {
       icon: <TiHomeOutline />,
@@ -36,7 +41,7 @@ export default function SiderMenu() {
     {
       icon: <TiHomeOutline />,
       title: "Đăng kí",
-      link: "/home",
+      link: "/register",
     },
   ];
   return (
@@ -47,7 +52,10 @@ export default function SiderMenu() {
             <li className="mb-[30px]" key={index}>
               <Link
                 href={item.link}
-                className="text-white flex items-center hover:text-[#00ADEF] capitalize"
+                className={
+                  " flex items-center hover:text-[#00ADEF] capitalize " +
+                  (pathName === item.link ? "text-[#00ADEF]" : "text-white")
+                }
               >
                 <span className="text-[20px] mr-[20px]">{item.icon}</span>
                 <span className="font-[700]">{item.title}</span>
