@@ -1,11 +1,42 @@
 import Link from "next/link";
+import { TiHomeOutline } from "react-icons/ti";
 
 export default function SiderMenu() {
   const menu = [
     {
-      icon: <>Icon</>,
+      icon: <TiHomeOutline />,
       title: "Trang chu",
       link: "/",
+    },
+    {
+      icon: <TiHomeOutline />,
+      title: "Danh muc bai hat",
+      link: "/category",
+    },
+    {
+      icon: <TiHomeOutline />,
+      title: "Ca sĩ",
+      link: "/singers",
+    },
+    {
+      icon: <TiHomeOutline />,
+      title: "Bài hát yêu thích",
+      link: "/wishlist",
+    },
+    {
+      icon: <TiHomeOutline />,
+      title: "Đăng xuất",
+      link: "/home",
+    },
+    {
+      icon: <TiHomeOutline />,
+      title: "Đăng nhập",
+      link: "/login",
+    },
+    {
+      icon: <TiHomeOutline />,
+      title: "Đăng kí",
+      link: "/home",
     },
   ];
   return (
@@ -13,9 +44,13 @@ export default function SiderMenu() {
       <nav className="py-[30px] px-[20px]">
         <ul className="">
           {menu.map((item, index) => (
-            <li className="" key={index}>
-              <Link href={item.link} className="text-white">
-                <span className="">{item.icon}</span>
+            <li className="mb-[30px]" key={index}>
+              <Link
+                href={item.link}
+                className="text-white flex items-center hover:text-[#00ADEF] capitalize"
+              >
+                <span className="text-[20px] mr-[20px]">{item.icon}</span>
+                <span className="font-[700]">{item.title}</span>
               </Link>
             </li>
           ))}
