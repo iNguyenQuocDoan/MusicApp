@@ -1,4 +1,5 @@
 import CardInfo from "@/app/components/card/CardInfo";
+import Section2 from "./Section2";
 
 export default function SongsByCategoryPage() {
   return (
@@ -14,6 +15,10 @@ export default function SongsByCategoryPage() {
               nhất và được cập nhật liên tục."
       />
       {/* CardInfo end*/}
+
+      {/* Section2 */}
+      <Section2 />
+      {/* Section2 end */}
     </>
   );
 }
