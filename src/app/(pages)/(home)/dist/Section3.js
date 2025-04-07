@@ -13,7 +13,7 @@ var __assign = (this && this.__assign) || function () {
 exports.__esModule = true;
 var cardItem_1 = require("@/app/components/card/cardItem");
 var Title_1 = require("@/app/components/title/Title");
-function Section2() {
+function Section3() {
     var data = [
         {
             image: "/Banner/AllanWalker.png",
@@ -48,7 +48,7 @@ function Section2() {
     ];
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "mt-[30px]" },
-            React.createElement(Title_1["default"], { text: "Danh Muc Noi Bat" }),
+            React.createElement(Title_1["default"], { text: "Danh Ca Si Noi Bat" }),
             React.createElement("div", { className: "grid grid-cols-5 gap-[20px]" }, data.map(function (item, index) { return (React.createElement(cardItem_1["default"], __assign({ key: index }, item))); })))));
 }
-exports["default"] = Section2;
+exports["default"] = Section3;

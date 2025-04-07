@@ -33,11 +33,17 @@ export default function Section2() {
       description: "5",
       link: "",
     },
+    {
+      image: "/Banner/AllanWalker.png",
+      title: "nhac da tre",
+      description: "5",
+      link: "",
+    },
   ];
   return (
     <>
       <div className="mt-[30px]">
-        <Title text={"Danh Muc Noi Bat"} />
+        <Title text={"Danh Muc Bai Hat"} />
         <div className="grid grid-cols-5 gap-[20px]">
           {data.map((item, index) => (
             <CardItem key={index} {...item} />

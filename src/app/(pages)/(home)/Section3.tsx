@@ -1,7 +1,7 @@
 import CardItem from "@/app/components/card/cardItem";
 import Title from "@/app/components/title/Title";
 
-export default function Section2() {
+export default function Section3() {
   const data = [
     {
       image: "/Banner/AllanWalker.png",
@@ -37,7 +37,7 @@ export default function Section2() {
   return (
     <>
       <div className="mt-[30px]">
-        <Title text={"Danh Muc Noi Bat"} />
+        <Title text={"Danh Ca Si Noi Bat"} />
         <div className="grid grid-cols-5 gap-[20px]">
           {data.map((item, index) => (
             <CardItem key={index} {...item} />
