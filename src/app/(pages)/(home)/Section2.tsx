@@ -1,4 +1,4 @@
-import CardItem from "@/app/components/card/cardItem";
+import CardItem from "@/app/components/card/CardItem";
 import Title from "@/app/components/title/Title";
 
 export default function Section2() {
