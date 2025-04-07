@@ -1,7 +1,19 @@
+import SongItem from "@/app/components/song/SongItem";
+import Title from "@/app/components/title/Title";
+import Link from "next/link";
+import Section1 from "./Section1";
+import Section2 from "./Section2";
+
 export default function Home() {
   return (
     <>
-      <h1 className="text-[35px] font-[700] h-[4000px] bg-red-50">Home Page</h1>
+      {/* Section1  */}
+      <Section1 />
+      {/* Section1 end */}
+
+      {/* Section2 */}
+      <Section2 />
+      {/* Section2 enh */}
     </>
   );
 }

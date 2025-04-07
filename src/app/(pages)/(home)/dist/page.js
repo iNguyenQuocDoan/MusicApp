@@ -1,7 +1,10 @@
 "use strict";
 exports.__esModule = true;
+var Section1_1 = require("./Section1");
+var Section2_1 = require("./Section2");
 function Home() {
     return (React.createElement(React.Fragment, null,
-        React.createElement("h1", { className: "text-[35px] font-[700] h-[4000px] bg-red-50" }, "Home Page")));
+        React.createElement(Section1_1["default"], null),
+        React.createElement(Section2_1["default"], null)));
 }
 exports["default"] = Home;

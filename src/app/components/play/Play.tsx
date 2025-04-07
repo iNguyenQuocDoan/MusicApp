@@ -45,7 +45,7 @@ export default function Play() {
                 type="range"
                 min={0}
                 max={100}
-                defaultValue={80}
+                defaultValue={0}
                 className="w-full h-[4px] bg-[#FFFFFF0A] cursor-pointer range-sm"
               />
             </div>

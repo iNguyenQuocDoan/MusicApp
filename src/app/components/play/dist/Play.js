@@ -24,7 +24,7 @@ function Play() {
                             React.createElement(fa_1.FaStepForward, null))),
                     React.createElement("div", { className: "mt-[11px] relative" },
                         React.createElement("div", { className: "h-[4px] w-0 bg-[#00ADEF] rounded-[50px] absolute left-0 top-[13px]" }),
-                        React.createElement("input", { type: "range", min: 0, max: 100, defaultValue: 80, className: "w-full h-[4px] bg-[#FFFFFF0A] cursor-pointer range-sm" }))),
+                        React.createElement("input", { type: "range", min: 0, max: 100, defaultValue: 0, className: "w-full h-[4px] bg-[#FFFFFF0A] cursor-pointer range-sm" }))),
                 React.createElement("div", { className: "w-[184px] flex items-end" },
                     React.createElement("button", { className: "text-white text-[16px]" },
                         React.createElement(ci_1.CiVolume, null)),
