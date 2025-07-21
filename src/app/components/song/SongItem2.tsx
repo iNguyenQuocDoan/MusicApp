@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaPlay } from "react-icons/fa";
 
 import { MdFavorite } from "react-icons/md";
@@ -14,7 +15,7 @@ export default function SongItem2(props: any) {
             <FaPlay />
           </button>
           <div className="aspect-square w-[42px] rounded-[8px] truncate mx-[12px]">
-            <img
+            <Image
               src={image}
               alt={title}
               className="object-cover w-full h-full"

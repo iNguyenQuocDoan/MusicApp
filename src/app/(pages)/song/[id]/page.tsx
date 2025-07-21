@@ -1,7 +1,13 @@
+import CardInfo from "@/app/components/card/CardInfo";
+
 export default function SongsDetailPage() {
   return (
     <>
-      <h1 className="text-[32] font-[700]"> Trang chi tiet bai hat</h1>
+      {/* CardInfo */}
+      <CardInfo image="" />
+      {/* Lời bài hát */}
+
+      {/* Bài hát cùng danh mục */}
     </>
   );
 }
