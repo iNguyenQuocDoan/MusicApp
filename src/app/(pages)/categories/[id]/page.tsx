@@ -1,4 +1,4 @@
-import CardInfo from "@/app/components/card/CardInfo";
+import CardInfo from "@/components/card/CardInfo";
 import Section2 from "./Section2";
 
 export default function SongsByCategoryPage() {

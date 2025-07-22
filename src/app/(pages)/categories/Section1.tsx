@@ -1,8 +1,8 @@
 "use client";
 
-import CardItem from "../../components/card/CardItem";
-import Title from "../../components/title/Title";
-import { dbFirebase } from "../../firebaseConfig";
+import CardItem from "@/components/card/CardItem";
+import Title from "@/components/title/Title";
+import { dbFirebase } from "@/app/firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import { useEffect } from "react";
 

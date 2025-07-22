@@ -1,5 +1,5 @@
-import SongItem from "@/app/components/song/SongItem";
-import Title from "@/app/components/title/Title";
+import SongItem from "@/components/song/SongItem";
+import Title from "@/components/title/Title";
 
 export default function Section1() {
   return (
