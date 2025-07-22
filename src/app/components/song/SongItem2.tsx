@@ -16,15 +16,20 @@ export default function SongItem2(props: any) {
           </button>
           <div className="aspect-square w-[42px] rounded-[8px] truncate mx-[12px]">
             <Image
+              width={42}
+              height={42}
               src={image}
               alt={title}
               className="object-cover w-full h-full"
             />
           </div>
+          <div className="font-[500] text-[16px] text-[#FFFFFF] mb-[2px]">
+            {title}
+          </div>
         </div>
         {/* Center */}
         <div className=" w-[30%]">
-          <div className="font-[400] text-[14px] text-[#FFFFFF]">{singer}</div>
+          <div className="font-[400] text-[14px] text-[#BBBBBB]">{singer}</div>
         </div>
         {/* Right */}
         <div className="w-[30%] text-right flex items-center justify-end">

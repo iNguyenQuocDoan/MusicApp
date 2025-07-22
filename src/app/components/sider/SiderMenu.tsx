@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaMusic } from "react-icons/fa";
+import { GiPerson } from "react-icons/gi";
+import { IoIosLogOut } from "react-icons/io";
+import { MdFavorite, MdOutlinePersonAdd } from "react-icons/md";
+import { TbLogin } from "react-icons/tb";
 import { TiHomeOutline } from "react-icons/ti";
 
 export default function SiderMenu() {
-  const pathName = usePathname();
+  const pathName = usePathname(); // lay path name
   console.log(pathName);
   const menu = [
     {
@@ -14,32 +19,32 @@ export default function SiderMenu() {
       link: "/",
     },
     {
-      icon: <TiHomeOutline />,
+      icon: <FaMusic />,
       title: "Danh muc bai hat",
       link: "/category",
     },
     {
-      icon: <TiHomeOutline />,
+      icon: <GiPerson />,
       title: "Ca sĩ",
       link: "/singers",
     },
     {
-      icon: <TiHomeOutline />,
+      icon: <MdFavorite />,
       title: "Bài hát yêu thích",
       link: "/wishlist",
     },
     {
-      icon: <TiHomeOutline />,
+      icon: <IoIosLogOut />,
       title: "Đăng xuất",
       link: "/logout",
     },
     {
-      icon: <TiHomeOutline />,
+      icon: <TbLogin />,
       title: "Đăng nhập",
       link: "/login",
     },
     {
-      icon: <TiHomeOutline />,
+      icon: <MdOutlinePersonAdd />,
       title: "Đăng kí",
       link: "/register",
     },

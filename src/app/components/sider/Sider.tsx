@@ -10,9 +10,9 @@ export default function Sider() {
             <Image
               width={200}
               height={66}
-              src="/"
+              src="/nextjs.jpeg"
               alt="Logo"
-              className="h-[66px] w-auto ml-auto mr-auto"
+              className="h-[100px] w-auto ml-auto mr-auto"
             ></Image>
           </Link>
         </div>
