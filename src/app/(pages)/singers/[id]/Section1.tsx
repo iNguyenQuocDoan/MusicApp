@@ -1,7 +1,7 @@
 import SongItem2 from "@/app/components/song/SongItem2";
 import Title from "@/app/components/title/Title";
 
-export default function Section2() {
+export default function Section1() {
   const data = [
     {
       image: "/Banner/image7.png",
