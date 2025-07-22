@@ -8,7 +8,7 @@ export default function SingerDetailPage() {
       <CardInfo
         image="/Banner/image8.png"
         title="Tùng lùn"
-        description="   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, quae
+        description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, quae
       provident qui cum impedit unde repellendus. Aut quisquam quos quibusdam
       pariatur dolor repellat alias deserunt autem. Soluta quam aut dicta?"
       />
