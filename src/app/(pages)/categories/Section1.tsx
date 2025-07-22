@@ -4,53 +4,28 @@ import CardItem from "../../components/card/CardItem";
 import Title from "../../components/title/Title";
 import { dbFirebase } from "../../firebaseConfig";
 import { onValue, ref } from "firebase/database";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Section1() {
-  const data = [
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac gia",
-      description: "1",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac khong gia",
-      description: "2",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac chua gia",
-      description: "3",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac chua tre",
-      description: "4",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac da tre",
-      description: "5",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac da tre",
-      description: "5",
-      link: "",
-    },
-  ];
+  const [dataFinal, setDataFinal] = useState<any>([]);
 
   useEffect(() => {
-    const res = ref(dbFirebase, "categories");
-    onValue(res, (snapshot) => {
+    const categoryRef = ref(dbFirebase, "categories");
+    onValue(categoryRef, (snapshot) => {
       const resData = snapshot.val();
-      console.log(resData);
+      if (resData) {
+        // Object.keys(resData) để lặp qua từ key của object dât
+        // lặp quảng mảng singerid xong tìm bản ghi ca sĩ có id đó
+        let categoryArr = Object.keys(resData).map((key) => ({
+          id: key,
+          image: resData[key].image,
+          title: resData[key].title,
+          description: resData[key].description,
+          link: `/categories/${key}`,
+        }));
+        // Lấy 5 danh mục đầu tiên
+        setDataFinal(categoryArr);
+      }
     });
   }, []);
   return (
@@ -58,9 +33,13 @@ export default function Section1() {
       <div className="mt-[30px]">
         <Title text={"Danh Muc Bai Hat"} />
         <div className="grid grid-cols-5 gap-[20px]">
-          {data.map((item, index) => (
-            <CardItem key={index} {...item} />
-          ))}
+          {dataFinal && (
+            <>
+              {dataFinal.map((item, index) => (
+                <CardItem key={index} {...item} />
+              ))}
+            </>
+          )}
         </div>
       </div>
     </>
