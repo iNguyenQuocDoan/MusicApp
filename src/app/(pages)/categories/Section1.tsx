@@ -1,5 +1,10 @@
+"use client";
+
 import CardItem from "@/app/components/card/CardItem";
 import Title from "@/app/components/title/Title";
+import { dbFirebase } from "@/app/firebaseConfig";
+import { onValue, ref } from "firebase/database";
+import { useEffect } from "react";
 
 export default function Section1() {
   const data = [
@@ -40,6 +45,14 @@ export default function Section1() {
       link: "",
     },
   ];
+
+  useEffect(() => {
+    const res = ref(dbFirebase, "categories");
+    onValue(res, (snapshot) => {
+      const resData = snapshot.val();
+      console.log(resData);
+    });
+  }, []);
   return (
     <>
       <div className="mt-[30px]">

@@ -21,7 +21,7 @@ export default function SiderMenu() {
     {
       icon: <FaMusic />,
       title: "Danh muc bai hat",
-      link: "/category",
+      link: "/categories",
     },
     {
       icon: <GiPerson />,

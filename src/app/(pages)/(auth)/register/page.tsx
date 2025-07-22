@@ -12,7 +12,7 @@ export default function RegisterPage() {
               <span className="text-red-500 ml-[5px]">*</span>
             </label>
             <input
-              type="email"
+              type="text"
               name="fullName"
               id="fullName"
               placeholder="Ví dụ Nguyễn Văn A"
