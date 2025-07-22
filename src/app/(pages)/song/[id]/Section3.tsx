@@ -1,5 +1,5 @@
-import SongItem2 from "@/components/song/SongItem2";
-import Title from "@/components/title/Title";
+import SongItem2 from "../../../components/song/SongItem2";
+import Title from "../../../components/title/Title";
 
 export default function Section3() {
   const data = [

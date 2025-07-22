@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Search from "@/components/search/Search";
-import Sider from "@/components/sider/Sider";
-import Play from "@/components/play/Play";
+import Search from "./components/search/Search";
+import Sider from "./components/sider/Sider";
+import Play from "./components/play/Play";
 
 export const metadata: Metadata = {
   title: "Project 5",

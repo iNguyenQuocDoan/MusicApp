@@ -1,5 +1,5 @@
-import CardInfo from "@/components/card/CardInfo";
-import Title from "@/components/title/Title";
+import CardInfo from "../../../components/card/CardInfo";
+import Title from "../../../components/title/Title";
 import Section3 from "./Section3";
 
 export default function SongsDetailPage() {

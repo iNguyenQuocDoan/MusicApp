@@ -1,4 +1,4 @@
-import CardInfo from "@/components/card/CardInfo";
+import CardInfo from "../../../components/card/CardInfo";
 import Section1 from "./Section1";
 
 export default function SingerDetailPage() {
