@@ -1,7 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import SongItem from "../../components/song/SongItem";
 import Title from "../../components/title/Title";
+import { dbFirebase } from "@/app/firebaseConfig";
+import { onValue, ref } from "firebase/database";
 
 export default function Section1() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [dataFinal, setDataFinal] = useState<any>([]);
+
+  useEffect(() => {
+    const songRef = ref(dbFirebase, "songs");
+    onValue(songRef, (snapshot) => {
+      const resData = snapshot.val();
+      if (resData) {
+        // Object.keys(resData) để lặp qua từ key của object dât
+        // lặp quảng mảng singerid xong tìm bản ghi ca sĩ có id đó
+        let songsArr = Object.keys(resData).map((key) => ({
+          id: key,
+          image: resData[key].image,
+          title: resData[key].title,
+          singer: "",
+          listen: resData[key].listen,
+          singerId: resData[key].singerId,
+        }));
+
+        songsArr = songsArr.slice(0, 3); // Lấy 3 bài hát đầu tiên
+        setDataFinal(songsArr);
+      }
+    });
+  }, []);
+
+  console.log(dataFinal);
   return (
     <>
       <div className="flex items-start flex-1 ">
@@ -31,24 +62,19 @@ export default function Section1() {
           {/* item */}
 
           <div className="grid grid-cols-1 gap-[10px]">
-            <SongItem
-              image="/Banner/HoQuangHieu.png"
-              title="Co phong"
-              singer="Ho Quang Hieu"
-              listen={1234}
-            />
-            <SongItem
-              image="/Banner/HoQuangHieu.png"
-              title="Co phong"
-              singer="Ho Quang Hieu"
-              listen={1234}
-            />
-            <SongItem
-              image="/Banner/HoQuangHieu.png"
-              title="Co phong"
-              singer="Ho Quang Hieu"
-              listen={1234}
-            />
+            {dataFinal && (
+              <>
+                {dataFinal.map((item: any) => (
+                  <SongItem
+                    key={item.id}
+                    image={item.image}
+                    title={item.title}
+                    singer={item.singer}
+                    listen={item.listen}
+                  />
+                ))}
+              </>
+            )}
           </div>
           {/* end item */}
         </div>
