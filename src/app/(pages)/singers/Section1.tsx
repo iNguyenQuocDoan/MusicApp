@@ -1,45 +1,32 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+import { useEffect, useState } from "react";
 import CardItem from "../../components/card/CardItem";
 import Title from "../../components/title/Title";
+import { onValue, ref } from "firebase/database";
+import { dbFirebase } from "@/app/firebaseConfig";
 
-export default function Section1() {
-  const data = [
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac gia",
-      description: "1",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac khong gia",
-      description: "2",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac chua gia",
-      description: "3",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac chua tre",
-      description: "4",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac da tre",
-      description: "5",
-      link: "",
-    },
-    {
-      image: "/Banner/AllanWalker.png",
-      title: "nhac da tre",
-      description: "5",
-      link: "",
-    },
-  ];
+export default function Section2() {
+  const [dataFinal, setDataFinal] = useState<any>([]);
+
+  useEffect(() => {
+    const singersRef = ref(dbFirebase, "singers");
+    onValue(singersRef, (snapshot) => {
+      const resData = snapshot.val();
+      if (resData) {
+        // Object.keys(resData) để lặp qua từ key của object data
+        const singersArr = Object.keys(resData).map((key) => ({
+          id: key,
+          image: resData[key].image,
+          title: resData[key].title,
+          description: resData[key].description,
+          link: `/singers/${key}`,
+        }));
+
+        setDataFinal(singersArr);
+      }
+    });
+  }, []);
   return (
     <>
       <div className="mt-[30px]">
@@ -48,9 +35,13 @@ export default function Section1() {
         <div className="grid grid-cols-1 gap-[10px]">
           {/* Item */}
           <div className="grid grid-cols-5 gap-[20px]">
-            {data.map((item, index) => (
-              <CardItem key={index} {...item} />
-            ))}
+            {dataFinal && (
+              <>
+                {dataFinal.map((item: any, index: number) => (
+                  <CardItem key={item.id || index} {...item} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>
