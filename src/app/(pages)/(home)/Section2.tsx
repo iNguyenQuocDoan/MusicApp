@@ -5,7 +5,7 @@ import Title from "../../components/title/Title";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
 import { useEffect, useState } from "react";
-import CardItem from "@/app/components/card/CardItem";
+import CardItem from "@/app/components/Card/CardItem";
 
 export default function Section2() {
   const [dataFinal, setDataFinal] = useState<any>([]);

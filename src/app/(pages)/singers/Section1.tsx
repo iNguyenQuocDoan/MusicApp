@@ -8,7 +8,7 @@ import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
 import SkeletonSingerList from "../../components/skeleton/SkeletonSingerList";
 import SkeletonGrid from "../../components/skeleton/SkeletonGrid";
-import CardItem from "@/app/components/card/CardItem";
+import CardItem from "@/app/components/Card/CardItem";
 
 export default function Section1() {
   const [dataFinal, setDataFinal] = useState<any>([]);

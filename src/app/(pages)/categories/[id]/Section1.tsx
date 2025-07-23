@@ -1,5 +1,5 @@
 "use client";
-import CardInfo from "@/app/components/card/CardInfo";
+import CardInfo from "@/app/components/Card/CardInfo";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { dbFirebase } from "@/app/firebaseConfig";
