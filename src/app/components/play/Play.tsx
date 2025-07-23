@@ -1,5 +1,6 @@
 import { CiPlay1, CiVolume } from "react-icons/ci";
 import { FaStepBackward, FaStepForward } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Play() {
   return (
@@ -7,11 +8,13 @@ export default function Play() {
       <div className="fixed bottom-0 bg-[#212121] border-t border-[#494949] w-full left-0  py-[20px] z-[999] ">
         <div className="container mx-auto flex justify-between">
           <div className="flex items-center w-[218px]">
-            <div className="w-[49px] aspect-square rounded-[14px] truncate">
-              <img
+            <div className="w-[49px] h-[49px] aspect-square rounded-[14px] truncate relative">
+              <Image
                 src="/Cophong.svg"
                 alt="Co phong"
-                className="h-full w-full object-cover"
+                fill
+                sizes="49px"
+                className="object-cover"
               />
             </div>
             <div className="ml-[12px]">

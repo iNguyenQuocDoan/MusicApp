@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CardItem from "../../components/card/CardItem";
 import Title from "../../components/title/Title";
 import { onValue, ref } from "firebase/database";
@@ -35,7 +35,7 @@ export default function Section2() {
         <div className="grid grid-cols-5 gap-[20px]">
           {dataFinal && (
             <>
-              {dataFinal.map((item: any, index: number) => (
+              {dataFinal.map((item: any) => (
                 <CardItem key={item.id} {...item} />
               ))}
             </>

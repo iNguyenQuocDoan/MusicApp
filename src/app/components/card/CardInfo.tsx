@@ -1,11 +1,19 @@
+import Image from "next/image";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function CardInfo(props: any) {
   const { image, title, description } = props;
   return (
     <>
       <div className="flex items-center">
-        <div className=" aspect-square rounded-[15px] truncate">
-          <img src={image} alt={title} className="w-full h-full object-cover" />
+        <div className="aspect-square w-[200px] h-[200px] rounded-[15px] truncate relative">
+          <Image
+            src={image}
+            alt={title || "Info image"}
+            fill
+            sizes="200px"
+            className="object-cover"
+          />
         </div>
         <div>
           <div className="flex-1 ml-[20px]">

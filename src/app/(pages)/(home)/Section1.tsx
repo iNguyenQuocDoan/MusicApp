@@ -1,10 +1,11 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import SongItem from "../../components/song/SongItem";
 import Title from "../../components/title/Title";
 import { dbFirebase } from "@/app/firebaseConfig";
 import { onValue, ref } from "firebase/database";
+import Image from "next/image";
 
 export default function Section1() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -13,21 +14,47 @@ export default function Section1() {
   useEffect(() => {
     const songRef = ref(dbFirebase, "songs");
     onValue(songRef, (snapshot) => {
-      const resData = snapshot.val();
-      if (resData) {
-        // Object.keys(resData) để lặp qua từ key của object dât
-        // lặp quảng mảng singerid xong tìm bản ghi ca sĩ có id đó
-        let songsArr = Object.keys(resData).map((key) => ({
+      const songData = snapshot.val();
+      if (songData) {
+        // Lấy danh sách bài hát từ songs
+        let songsArr = Object.keys(songData).map((key) => ({
           id: key,
-          image: resData[key].image,
-          title: resData[key].title,
+          image: songData[key].image,
+          title: songData[key].title,
           singer: "",
-          listen: resData[key].listen,
-          singerId: resData[key].singerId,
+          listen: songData[key].listen,
+          singerId: songData[key].singerId,
+          audio: songData[key].audio || "",
+          link: `/song/${key}`,
         }));
 
-        songsArr = songsArr.slice(0, 3); // Lấy 3 bài hát đầu tiên
-        setDataFinal(songsArr);
+        // Lấy top 3 bài hát có lượt nghe nhiều nhất
+        songsArr = songsArr.sort((a, b) => b.listen - a.listen).slice(0, 3);
+
+        // Lấy thông tin ca sĩ
+        const singerRef = ref(dbFirebase, "singers");
+        onValue(singerRef, (singerSnapshot) => {
+          const singerData = singerSnapshot.val();
+          if (singerData) {
+            // Cập nhật tên ca sĩ cho mỗi bài hát
+            const updatedSongsArr = songsArr.map((song) => {
+              let singerNames = "";
+              if (Array.isArray(song.singerId)) {
+                // Nếu có nhiều ca sĩ
+                singerNames = song.singerId
+                  .map((id) => singerData[id]?.title || "")
+                  .filter((name) => name !== "")
+                  .join(", ");
+              } else if (song.singerId) {
+                // Nếu chỉ có một ca sĩ
+                singerNames = singerData[song.singerId]?.title || "";
+              }
+              return { ...song, singer: singerNames };
+            });
+
+            setDataFinal(updatedSongsArr);
+          }
+        });
       }
     });
   }, []);
@@ -48,11 +75,14 @@ export default function Section1() {
                 nhất hiện tại của thể loại Top 100 Nhạc Electronic/Dance Âu Mỹ
               </div>
             </div>
-            <div className="">
-              <img
+            <div className="relative w-[215px] h-[321px] mt-[17%] mr-[25px]">
+              <Image
                 src="/Banner/Nigga1.png"
                 alt="EDM"
-                className="w-[215px] h-[321px]  mt-[17%] mr-[25px] "
+                fill
+                priority
+                sizes="215px"
+                className="object-contain"
               />
             </div>
           </div>
@@ -71,6 +101,7 @@ export default function Section1() {
                     title={item.title}
                     singer={item.singer}
                     listen={item.listen}
+                    link={item.link}
                   />
                 ))}
               </>

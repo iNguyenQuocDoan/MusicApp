@@ -1,104 +1,198 @@
 {
   "categories": {
     "1": {
-      "image": "https://backend.daca.vn/assets/images/nhac-tre.jpg",
+      "image": "https://i.ytimg.com/vi/GpmOn4RyzZI/maxresdefault.jpg",
       "title": "Nhạc trẻ",
       "description": "Tổng hợp nhạc Nhạc trẻ mới nhất"
     },
     "2": {
-      "image": "https://backend.daca.vn/assets/images/bolero.jpg",
+      "image": "https://i.ytimg.com/vi/BkHOL3_FOV0/maxresdefault.jpg",
       "title": "Bolero",
       "description": "Tổng hợp nhạc Bolero mới nhất"
     },
     "3": {
-      "image": "https://backend.daca.vn/assets/images/remix.jpg",
+      "image": "https://i.ytimg.com/vi/72gi5eHtDqM/maxresdefault.jpg",
       "title": "Remix",
       "description": "Tổng hợp nhạc Remix mới nhất"
     },
     "4": {
-      "image": "https://backend.daca.vn/assets/images/hip-hop.jpg",
+      "image": "https://i.ytimg.com/vi/-vtBgNxMyZI/maxresdefault.jpg",
       "title": "Hip-Hop",
       "description": "Tổng hợp nhạc Hip-Hop mới nhất"
     },
     "5": {
-      "image": "https://backend.daca.vn/assets/images/latin.jpg",
+      "image": "https://i.ytimg.com/vi/ix0HimdfZOU/maxresdefault.jpg",
       "title": "Latin",
       "description": "Tổng hợp nhạc Latin mới nhất"
     },
     "6": {
-      "image": "https://backend.daca.vn/assets/images/acoustic.jpg",
+      "image": "https://i.ytimg.com/vi/X7sSE3yCNLI/maxresdefault.jpg",
       "title": "Acoustic",
       "description": "Tổng hợp nhạc Acoustic mới nhất"
     },
     "7": {
-      "image": "https://backend.daca.vn/assets/images/rock.jpg",
+      "image": "https://i.ytimg.com/vi/pdkzU2YhffM/maxresdefault.jpg",
       "title": "Rock",
       "description": "Tổng hợp nhạc Rock mới nhất"
+    },
+    "8": {
+      "image": "https://i.ytimg.com/vi/00kl9SQxMUM/maxresdefault.jpg",
+      "title": "R&B",
+      "description": "Giai điệu R&B mềm mại, sâu lắng"
+    },
+    "9": {
+      "image": "https://i.ytimg.com/vi/jcbmtUuIIno/maxresdefault.jpg",
+      "title": "Indie",
+      "description": "Nhạc Indie độc lập, cá tính"
+    },
+    "10": {
+      "image": "https://i.ytimg.com/vi/lwzXKoLV4VM/maxresdefault.jpg",
+      "title": "Lo-fi",
+      "description": "Nhạc Lo-fi thư giãn, nhẹ nhàng"
     }
   },
   "singers": {
     "1": {
-      "image": "https://backend.daca.vn/assets/images/tang-duy-tan.jpg",
-      "title": "Tăng Duy Tân",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      "image": "https://tse2.mm.bing.net/th/id/OIP.wq2tdv0O83VJsCilZpsQIQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "title": "Sơn Tùng M-TP",
+      "description": "Nam ca sĩ/nhạc sĩ đình đám V-pop."
     },
     "2": {
-      "image": "https://backend.daca.vn/assets/images/thanh-dat.jpg",
-      "title": "Thành Đạt",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      "image": "https://kenh14cdn.com/2017/1-1512583375659.jpg",
+      "title": "Mỹ Tâm",
+      "description": "Nữ ca sĩ nổi tiếng của V-pop."
     },
     "3": {
-      "image": "https://backend.daca.vn/assets/images/cao-thai-son.jpg",
-      "title": "Cao Thái Sơn",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      "image": "https://nguoinoitieng.tv/images/nnt/104/0/bhvp.jpg",
+      "title": "Tăng Duy Tân",
+      "description": "Ca sĩ/nhạc sĩ trẻ Việt Nam."
     },
     "4": {
-      "image": "https://backend.daca.vn/assets/images/tlong.jpg",
-      "title": "TLong",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      "image": "https://tse2.mm.bing.net/th/id/OIP.S7BVFOxW3sZk91FiDa7OfQHaKO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "title": "Chi Pu",
+      "description": "Ca sĩ/diễn viên Việt Nam."
     },
     "5": {
-      "image": "https://backend.daca.vn/assets/images/nal.jpg",
+      "image": "https://static.tuoitre.vn/tto/i/s626/2016/07/06/erik-1-1467796290.jpg",
+      "title": "ERIK",
+      "description": "Ca sĩ trẻ với nhiều bản hit ballad/R&B."
+    },
+    "6": {
+      "image": "https://tse4.mm.bing.net/th/id/OIP.FGmPscVZILmfEvc34BkWdwHaLT?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "title": "Phương Ly",
+      "description": "Ca sĩ Indie/Pop với phong cách trẻ trung."
+    },
+    "7": {
+      "image": "https://th.bing.com/th/id/R.40e9ceaaf9bbafac6a003a99f46ff883?rik=Zje%2fEt2lhDiRkg&riu=http%3a%2f%2fmusicshow.vn%2fimages%2fupload%2fCa+si%2fcao-thai-son.jpg&ehk=dqmV2EsBRmCLABKhDAInAY4FElWBpWdhkwrc1NFnVco%3d&risl=&pid=ImgRaw&r=0",
+      "title": "Cao Thái Sơn",
+      "description": "Ca sĩ Việt Nam với nhiều bản pop-ballad nổi tiếng."
+    },
+    "8": {
+      "image": "https://tse1.mm.bing.net/th/id/OIP.3AU3H6ZBYSjxysxgpmxroAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
       "title": "Nal",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      "description": "Giọng ca trẻ với âm nhạc gần gũi, mộc mạc."
+    },
+    "9": {
+      "image": "https://i.ytimg.com/vi/frsEJWz4Ii4/maxresdefault.jpg",
+      "title": "TLong",
+      "description": "Ca sĩ trẻ gây chú ý với các ca khúc buồn."
+    },
+    "10": {
+      "image": "https://i.ytimg.com/vi/ZHcN1Q6ttuM/maxresdefault.jpg",
+      "title": "Thành Đạt",
+      "description": "Giọng ca trẻ với nhiều bản hit ballad."
     }
   },
   "songs": {
     "1": {
-      "image": "https://backend.daca.vn/assets/images/cat-doi-noi-sau.jpg",
+      "image": "https://i.ytimg.com/vi/GpmOn4RyzZI/maxresdefault.jpg",
       "title": "Cắt Đôi Nỗi Sầu",
       "categoryId": "1",
-      "singerId": ["1", "3"],
+      "singerId": ["3", "7"],
       "audio": "https://backend.daca.vn/assets/audios/cat-doi-noi-sau.mp3",
       "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      "listen": 24500
+      "listen": 2450000
     },
     "2": {
-      "image": "https://backend.daca.vn/assets/images/ngay-mai-nguoi-ta-lay-chong.jpg",
+      "image": "https://i.ytimg.com/vi/BkHOL3_FOV0/maxresdefault.jpg",
       "title": "Ngày Mai Người Ta Lấy Chồng",
       "categoryId": "1",
-      "singerId": ["2"],
+      "singerId": ["10"],
       "audio": "https://backend.daca.vn/assets/audios/ngay-mai-nguoi-ta-lay-chong.mp3",
       "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       "listen": 20500
     },
     "3": {
-      "image": "https://backend.daca.vn/assets/images/tat-ca-hoac-khong-la-gi-ca.jpg",
-      "title": "Tất Cả Hoặc Không Là Gì Cả",
+      "image": "https://i.ytimg.com/vi/72gi5eHtDqM/maxresdefault.jpg",
+      "title": "Tất Cả Hoặc Không Là Gì Cả (Remix)",
       "categoryId": "3",
-      "singerId": ["3"],
+      "singerId": ["7"],
       "audio": "https://backend.daca.vn/assets/audios/tat-ca-hoac-khong-la-gi-ca.mp3",
       "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       "listen": 18800
     },
     "4": {
-      "image": "https://backend.daca.vn/assets/images/ruou-mung-hoa-nguoi-dung.jpg",
+      "image": "https://i.ytimg.com/vi/jcbmtUuIIno/maxresdefault.jpg",
       "title": "Rượu Mừng Hóa Người Dưng",
       "categoryId": "6",
-      "singerId": ["4", "3"],
+      "singerId": ["9", "7"],
       "audio": "https://backend.daca.vn/assets/audios/ruou-mung-hoa-nguoi-dung.mp3",
       "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       "listen": 22800
+    },
+    "5": {
+      "image": "https://i.ytimg.com/vi/hVmktqJukro/maxresdefault.jpg",
+      "title": "Em Của Ngày Hôm Qua",
+      "categoryId": "1",
+      "singerId": ["1"],
+      "audio": "https://www.samplelib.com/lib/preview/mp3/sample-15s.mp3",
+      "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "listen": 502300
+    },
+    "6": {
+      "image": "https://i.ytimg.com/vi/00kl9SQxMUM/maxresdefault.jpg",
+      "title": "Nếu Anh Đi",
+      "categoryId": "8",
+      "singerId": ["2"],
+      "audio": "https://www.samplelib.com/lib/preview/mp3/sample-3s.mp3",
+      "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "listen": 99300
+    },
+    "7": {
+      "image": "https://i.ytimg.com/vi/-vtBgNxMyZI/maxresdefault.jpg",
+      "title": "Chạy Ngay Đi",
+      "categoryId": "4",
+      "singerId": ["1"],
+      "audio": "https://www.samplelib.com/lib/preview/mp3/sample-6s.mp3",
+      "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "listen": 712000
+    },
+    "8": {
+      "image": "https://i.ytimg.com/vi/lwzXKoLV4VM/maxresdefault.jpg",
+      "title": "Anh Đã Quen Với Cô Đơn",
+      "categoryId": "6",
+      "singerId": ["5"],
+      "audio": "https://www.samplelib.com/lib/preview/mp3/sample-9s.mp3",
+      "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "listen": 132000
+    },
+    "9": {
+      "image": "https://i.ytimg.com/vi/ix0HimdfZOU/maxresdefault.jpg",
+      "title": "Gu",
+      "categoryId": "9",
+      "singerId": ["4"],
+      "audio": "https://www.samplelib.com/lib/preview/mp3/sample-12s.mp3",
+      "lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "listen": 86000
+    },
+    "10": {
+      "image": "https://i.ytimg.com/vi/pdkzU2YhffM/maxresdefault.jpg",
+      "title": "Thương Em Là Điều Anh Không Thể Ngờ",
+      "categoryId": "1",
+      "singerId": ["7"],
+      "audio": "https://www.samplelib.com/lib/preview/mp3/sample-15s.mp3",
+      "Lyric": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "listen": 154000
     }
   }
 }

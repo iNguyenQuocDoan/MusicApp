@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CardItem from "../../components/card/CardItem";
 import Title from "../../components/title/Title";
 import { dbFirebase } from "../../firebaseConfig";
@@ -35,7 +35,7 @@ export default function Section1() {
         <div className="grid grid-cols-5 gap-[20px]">
           {dataFinal && (
             <>
-              {dataFinal.map((item, index) => (
+              {dataFinal.map((item: any, index: number) => (
                 <CardItem key={index} {...item} />
               ))}
             </>

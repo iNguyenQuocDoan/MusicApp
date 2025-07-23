@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import CardItem from "../../components/card/CardItem";
 import Title from "../../components/title/Title";
@@ -10,12 +10,11 @@ export default function Section3() {
   const [dataFinal, setDataFinal] = useState<any>([]);
 
   useEffect(() => {
-    const categoryRef = ref(dbFirebase, "categories");
-    onValue(categoryRef, (snapshot) => {
+    const singersRef = ref(dbFirebase, "singers");
+    onValue(singersRef, (snapshot) => {
       const resData = snapshot.val();
       if (resData) {
-        // Object.keys(resData) để lặp qua từ key của object dât
-        // lặp quảng mảng singerid xong tìm bản ghi ca sĩ có id đó
+        // Object.keys(resData) để lặp qua từ key của object data
         let singersArr = Object.keys(resData).map((key) => ({
           id: key,
           image: resData[key].image,
@@ -23,7 +22,7 @@ export default function Section3() {
           description: resData[key].description,
           link: `/singers/${key}`,
         }));
-        singersArr = singersArr.slice(0, 5); // Lấy 5 danh mục đầu tiên
+        singersArr = singersArr.slice(0, 5); // Lấy 5 ca sĩ nổi bật
         setDataFinal(singersArr);
       }
     });
@@ -31,12 +30,12 @@ export default function Section3() {
   return (
     <>
       <div className="mt-[30px]">
-        <Title text={"Danh Ca Si Noi Bat"} />
+        <Title text={"Ca Sĩ Nổi Bật"} />
         <div className="grid grid-cols-5 gap-[20px]">
           {dataFinal && (
             <>
-              {dataFinal.map((item, index) => (
-                <CardItem key={index} {...item} />
+              {dataFinal.map((item: any, index: number) => (
+                <CardItem key={item.id || index} {...item} />
               ))}
             </>
           )}

@@ -1,11 +1,13 @@
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
+import Link from "next/link";
 import { FaPlay } from "react-icons/fa";
-
 import { MdFavorite } from "react-icons/md";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SongItem2(props: any) {
-  const { image, title, singer, time } = props;
+  const { image, title, singer, time, link } = props;
   return (
     <>
       <div className="flex items-center justify-between bg-[#212121] py-[10px] px-[18px] rounded-[15px]">
@@ -14,17 +16,26 @@ export default function SongItem2(props: any) {
           <button className="text-[20px] text-white">
             <FaPlay />
           </button>
-          <div className="aspect-square w-[42px] rounded-[8px] truncate mx-[12px]">
+          <div className="aspect-square w-[42px] h-[42px] rounded-[8px] truncate mx-[12px] relative">
             <Image
-              width={42}
-              height={42}
               src={image}
-              alt={title}
-              className="object-cover w-full h-full"
+              alt={title || "Song image"}
+              fill
+              sizes="42px"
+              className="object-cover"
             />
           </div>
           <div className="font-[500] text-[16px] text-[#FFFFFF] mb-[2px]">
-            {title}
+            {link ? (
+              <Link
+                href={link}
+                className="hover:text-blue-400 transition-colors"
+              >
+                {title}
+              </Link>
+            ) : (
+              title
+            )}
           </div>
         </div>
         {/* Center */}
