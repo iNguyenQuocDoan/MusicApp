@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import CardInfo from "@/app/components/Card/CardInfo";
+import CardInfo from "../../../components/Card/CardInfo";
 import { dbFirebase } from "@/app/firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ export default function Section1(props: { id: string }) {
         });
       }
     });
-  }, []);
+  }, [id]);
   return (
     <>
       {" "}

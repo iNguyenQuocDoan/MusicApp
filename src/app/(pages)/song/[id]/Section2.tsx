@@ -19,7 +19,7 @@ export default function Section2(props: { id: string }) {
         });
       }
     });
-  }, []);
+  }, [id]);
   return (
     <div className="mt-[30px]">
       <Title text="Lời bài hát"></Title>
