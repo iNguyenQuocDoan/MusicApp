@@ -5,9 +5,11 @@ import SongItem2 from "../../components/song/SongItem2";
 import Title from "../../components/title/Title";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase, authFirebase } from "@/app/firebaseConfig";
+import SkeletonSongList from "../../components/skeleton/SkeletonSongList";
 
 export default function Section1() {
   const [dataFinal, setDataFinal] = useState<any[]>([]); // Khởi tạo là array rỗng thay vì undefined
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const userId = authFirebase?.currentUser?.uid;
@@ -42,8 +44,10 @@ export default function Section1() {
         );
 
         setDataFinal(songsArray);
+        setLoading(false);
       } else {
         setDataFinal([]);
+        setLoading(false);
       }
     });
   }, []);
@@ -54,7 +58,9 @@ export default function Section1() {
         {/* List */}
         <div className="grid grid-cols-1 gap-[10px]">
           {/* Item */}
-          {dataFinal && dataFinal.length > 0 ? (
+          {loading ? (
+            <SkeletonSongList count={6} />
+          ) : dataFinal && dataFinal.length > 0 ? (
             dataFinal.map((item, index) => <SongItem2 key={index} {...item} />)
           ) : (
             <div className="text-center text-gray-400 py-8">

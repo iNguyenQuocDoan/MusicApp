@@ -5,9 +5,11 @@ import Title from "../../components/title/Title";
 import { dbFirebase } from "../../firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
+import SkeletonGrid from "../../components/skeleton/SkeletonGrid";
 
 export default function Section1() {
   const [dataFinal, setDataFinal] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const categoryRef = ref(dbFirebase, "categories");
@@ -16,7 +18,7 @@ export default function Section1() {
       if (resData) {
         // Object.keys(resData) để lặp qua từ key của object dât
         // lặp quảng mảng singerid xong tìm bản ghi ca sĩ có id đó
-        let categoryArr = Object.keys(resData).map((key) => ({
+        const categoryArr = Object.keys(resData).map((key) => ({
           id: key,
           image: resData[key].image,
           title: resData[key].title,
@@ -25,6 +27,7 @@ export default function Section1() {
         }));
         // Lấy 5 danh mục đầu tiên
         setDataFinal(categoryArr);
+        setLoading(false);
       }
     });
   }, []);
@@ -32,15 +35,19 @@ export default function Section1() {
     <>
       <div className="mt-[30px]">
         <Title text={"Danh Muc Bai Hat"} />
-        <div className="grid grid-cols-5 gap-[20px]">
-          {dataFinal && (
-            <>
-              {dataFinal.map((item: any, index: number) => (
-                <CardItem key={index} {...item} />
-              ))}
-            </>
-          )}
-        </div>
+        {loading ? (
+          <SkeletonGrid count={10} />
+        ) : (
+          <div className="grid grid-cols-5 gap-[20px]">
+            {dataFinal && (
+              <>
+                {dataFinal.map((item: any, index: number) => (
+                  <CardItem key={index} {...item} />
+                ))}
+              </>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

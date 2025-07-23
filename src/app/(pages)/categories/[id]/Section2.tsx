@@ -6,11 +6,13 @@ import Title from "../../../components/title/Title";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
 import { getSingerNames } from "@/app/utils/songUtils";
+import SkeletonSongList from "../../../components/skeleton/SkeletonSongList";
 
 export default function Section2(prop: { id: string }) {
   const { id } = prop;
 
   const [dataFinal, setDataFinal] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const songsRef = ref(dbFirebase, "songs");
@@ -42,6 +44,7 @@ export default function Section2(prop: { id: string }) {
           songsArray = songsArray.filter((item) => item.categoryId === id);
 
           setDataFinal(songsArray);
+          setLoading(false);
         }
       });
     });
@@ -54,7 +57,9 @@ export default function Section2(prop: { id: string }) {
         {/* List */}
         <div className="grid grid-cols-1 gap-[10px]">
           {/* Item */}
-          {dataFinal && dataFinal.length > 0 ? (
+          {loading ? (
+            <SkeletonSongList count={8} />
+          ) : dataFinal && dataFinal.length > 0 ? (
             <>
               {dataFinal.map((item: any) => (
                 <SongItem2 key={item.id} {...item} />

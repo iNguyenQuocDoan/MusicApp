@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Singer {
   id: string;
@@ -119,42 +120,41 @@ export default function SingerList() {
       {singers.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {singers.map((singer) => (
-            <div
-              key={singer.id}
-              className="bg-[#212121] rounded-lg p-4 hover:bg-[#333] transition-colors duration-200"
-            >
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-600 flex-shrink-0 relative">
-                  {singer.image ? (
-                    <Image
-                      src={singer.image}
-                      alt={singer.name}
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                      <span className="text-2xl">🎤</span>
-                    </div>
-                  )}
-                </div>
+            <Link key={singer.id} href={`/singers/${singer.id}`}>
+              <div className="bg-[#212121] rounded-lg p-4 hover:bg-[#333] transition-colors duration-200 cursor-pointer">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-600 flex-shrink-0 relative">
+                    {singer.image ? (
+                      <Image
+                        src={singer.image}
+                        alt={singer.name}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        <span className="text-2xl">🎤</span>
+                      </div>
+                    )}
+                  </div>
 
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-semibold text-lg truncate">
-                    {singer.name}
-                  </h3>
-                  <p className="text-[#00ADEF] text-sm">
-                    {singer.count} bài hát
-                  </p>
-                  {singer.songs.length > 0 && (
-                    <p className="text-gray-400 text-xs mt-1 truncate">
-                      Bài hát nổi bật: {singer.songs[0]}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white font-semibold text-lg truncate">
+                      {singer.name}
+                    </h3>
+                    <p className="text-[#00ADEF] text-sm">
+                      {singer.count} bài hát
                     </p>
-                  )}
+                    {singer.songs.length > 0 && (
+                      <p className="text-gray-400 text-xs mt-1 truncate">
+                        Bài hát nổi bật: {singer.songs[0]}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (

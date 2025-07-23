@@ -6,10 +6,12 @@ import Title from "../../components/title/Title";
 import { dbFirebase } from "@/app/firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import Image from "next/image";
+import SkeletonHomePage from "../../components/skeleton/SkeletonHomePage";
 
 export default function Section1() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [dataFinal, setDataFinal] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const songRef = ref(dbFirebase, "songs");
@@ -53,6 +55,7 @@ export default function Section1() {
             });
 
             setDataFinal(updatedSongsArr);
+            setLoading(false);
           }
         });
       }
@@ -60,29 +63,34 @@ export default function Section1() {
   }, []);
 
   console.log(dataFinal);
+
+  if (loading) {
+    return <SkeletonHomePage />;
+  }
+
   return (
     <>
       <div className="flex items-start flex-1 ">
         <div className="w-[535px] h-full">
           <div
-            className="w-full flex items-center bg-cover rounded-[15px] h-[361px]"
+            className="w-full flex items-center bg-cover rounded-[15px] h-[361px] overflow-hidden relative"
             style={{ backgroundImage: "url('/Banner/Background1.png')" }}
           >
-            <div className="flex-1 mr-[34px] ml-[30px]">
+            <div className="flex-1 mr-[34px] ml-[30px] z-10">
               <div className="font-[700] text-[32px] text-white">Nhac EDM</div>
               <div className="font-[500] text-[14px] text-white">
                 Top 100 Nhạc Electronic/Dance Âu Mỹ là danh sách 100 ca khúc hot
                 nhất hiện tại của thể loại Top 100 Nhạc Electronic/Dance Âu Mỹ
               </div>
             </div>
-            <div className="relative w-[215px] h-[321px] mt-[17%] mr-[25px]">
+            <div className="absolute right-[20px] bottom-0 w-[200px] h-[280px]">
               <Image
                 src="/Banner/Nigga1.png"
                 alt="EDM"
                 fill
                 priority
-                sizes="215px"
-                className="object-contain"
+                sizes="200px"
+                className="object-contain object-bottom"
               />
             </div>
           </div>

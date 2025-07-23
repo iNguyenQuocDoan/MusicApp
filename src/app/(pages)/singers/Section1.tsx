@@ -6,10 +6,13 @@ import Title from "../../components/title/Title";
 import SingerList from "../../components/singer/SingerList";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
+import SkeletonSingerList from "../../components/skeleton/SkeletonSingerList";
+import SkeletonGrid from "../../components/skeleton/SkeletonGrid";
 
 export default function Section1() {
   const [dataFinal, setDataFinal] = useState<any>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list">("list"); // Mặc định hiển thị dạng list
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const singersRef = ref(dbFirebase, "singers");
@@ -26,6 +29,7 @@ export default function Section1() {
         }));
 
         setDataFinal(singersArr);
+        setLoading(false);
       }
     });
   }, []);
@@ -60,7 +64,13 @@ export default function Section1() {
         </div>
 
         {/* Hiển thị theo chế độ được chọn */}
-        {viewMode === "list" ? (
+        {loading ? (
+          viewMode === "list" ? (
+            <SkeletonSingerList />
+          ) : (
+            <SkeletonGrid count={10} />
+          )
+        ) : viewMode === "list" ? (
           <SingerList />
         ) : (
           <div className="grid grid-cols-1 gap-[10px]">
