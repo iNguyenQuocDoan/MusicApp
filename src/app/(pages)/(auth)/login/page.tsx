@@ -1,11 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 import Title from "../../../components/title/Title";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { authFirebase } from "@/app/firebaseConfig";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const handleLogin = (event: any) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    signInWithEmailAndPassword(authFirebase, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        if (user) {
+          console.log("Đăng nhập thành công");
+          router.push("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Lỗi đăng nhập:", error);
+      });
+  };
   return (
     <>
       <div className="mt-[60px] w-[500px] mx-auto">
         <Title text="Đăng nhập tài khoản" className="text-center" />
-        <form action="" className="">
+        <form className="" onSubmit={handleLogin}>
           <div className="mb-[15px]">
             <label className="block mb-[5px] font-[600] text-[14px]" htmlFor="">
               <span className="text-white">Email</span>

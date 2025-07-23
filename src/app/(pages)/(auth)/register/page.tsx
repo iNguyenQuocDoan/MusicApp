@@ -1,11 +1,40 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import Title from "../../../components/title/Title";
+import { ref, set } from "firebase/database";
+import { authFirebase, dbFirebase } from "@/app/firebaseConfig";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const handleRegister = (event: any) => {
+    event.preventDefault();
+    const fullName = event.target.fullName.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    createUserWithEmailAndPassword(authFirebase, email, password).then(
+      (userCredential) => {
+        const user = userCredential.user;
+        set(ref(dbFirebase, "users/" + user.uid), {
+          fullName: fullName,
+        })
+          .then(() => {
+            console.log("User registered successfully");
+            router.push("/");
+          })
+          .catch((error) => {
+            console.error("Error registering user:", error);
+          });
+      }
+    );
+  };
   return (
     <>
       <div className="mt-[60px] w-[500px] mx-auto">
         <Title text="Đăng ký tài khoản" className="text-center" />
-        <form action="" className="">
+        <form onSubmit={handleRegister}>
           <div className="mb-[15px]">
             <label className="block mb-[5px] font-[600] text-[14px]" htmlFor="">
               <span className="text-white">Họ tên</span>
@@ -57,7 +86,7 @@ export default function RegisterPage() {
             type="submit"
             className="h-[50px] w-full bg-[#00ADEF] text-white rounded-[6px] font-[600] text-[16px]"
           >
-            Đăng nhập
+            Đăng ký
           </button>
         </form>
       </div>
