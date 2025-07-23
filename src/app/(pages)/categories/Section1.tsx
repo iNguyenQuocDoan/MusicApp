@@ -1,11 +1,12 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import CardItem from "../../components/card/CardItem";
+
 import Title from "../../components/title/Title";
 import { dbFirebase } from "../../firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import SkeletonGrid from "../../components/skeleton/SkeletonGrid";
+import CardItem from "@/app/components/card/CardItem";
 
 export default function Section1() {
   const [dataFinal, setDataFinal] = useState<any>([]);
