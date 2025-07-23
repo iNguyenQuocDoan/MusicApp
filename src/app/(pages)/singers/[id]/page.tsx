@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import CardInfo from "../../../components/Card/CardInfo";
+import CardInfo from "../../../components/card/CardInfo";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 

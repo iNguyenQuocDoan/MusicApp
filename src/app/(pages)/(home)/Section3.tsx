@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import CardItem from "../../components/Card/CardItem";
+import CardItem from "../../components/card/CardItem";
 import Title from "../../components/title/Title";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
