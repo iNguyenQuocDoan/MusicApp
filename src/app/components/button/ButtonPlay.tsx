@@ -27,9 +27,6 @@ export default function ButtonPlay(props: any) {
       elementImage.src = image;
       elementImage.alt = title;
     }
-
-    // Hiển thị tên bài hát
-
     // Hiển thị tiêu đề
     const elementTitle: any = elementPlayAudio.querySelector(".inner-title");
     if (elementTitle) {
