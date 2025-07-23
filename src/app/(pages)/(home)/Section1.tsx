@@ -104,6 +104,7 @@ export default function Section1() {
                     listen={item.listen}
                     link={item.link}
                     audio={item.audio}
+                    wishlist={item.wishlist}
                   />
                 ))}
               </>

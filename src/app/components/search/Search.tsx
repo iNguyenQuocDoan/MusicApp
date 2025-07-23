@@ -5,6 +5,7 @@ import { onValue, ref } from "firebase/database";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
+import { getSingerNames } from "@/app/utils/songUtils";
 
 export default function Search() {
   // chuyển trang mà không load lại
@@ -14,32 +15,43 @@ export default function Search() {
 
   const keywordDefault = params.get("keyword") || "";
 
-  const [dataFinal, setDataFinal] = useState<any>([]);
+  const [dataFinal, setDataFinal] = useState<any[]>([]);
 
   useEffect(() => {
     const songsRef = ref(dbFirebase, "songs");
-    onValue(songsRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        // Lặp qua mảng singerId xong tìm bản ghi ca sĩ có id đó
-        // Object.keys(data) để lặp qua từ key của object data
-        let songsArray = Object.keys(data).map((key) => ({
-          id: key,
-          image: data[key].image,
-          title: data[key].title,
-          singer: "Hồ Quang Hiếu, Huỳnh Văn",
-          listen: data[key].listen,
-          singerId: data[key].singerId,
-          categoryId: data[key].categoryId,
-          time: "4:32",
-          audio: data[key].audio,
-          wishlist: data[key].wishlist,
-        }));
-        const regex = new RegExp(keywordDefault, "i");
-        songsArray = songsArray.filter((item) => regex.test(item.title));
+    const singersRef = ref(dbFirebase, "singers");
 
-        setDataFinal(songsArray);
-      }
+    // Lấy dữ liệu singers trước
+    onValue(singersRef, (singerSnapshot) => {
+      const singerData = singerSnapshot.val();
+
+      // Sau đó lấy dữ liệu songs
+      onValue(songsRef, (songSnapshot) => {
+        const songData = songSnapshot.val();
+        if (songData && singerData) {
+          // Lặp qua mảng singerId xong tìm bản ghi ca sĩ có id đó
+          // Object.keys(data) để lặp qua từ key của object data
+          let songsArray = Object.keys(songData).map((key) => ({
+            id: key,
+            image: songData[key].image,
+            title: songData[key].title,
+            singer: getSingerNames(songData[key].singerId, singerData),
+            listen: songData[key].listen,
+            singerId: songData[key].singerId,
+            categoryId: songData[key].categoryId,
+            time: "4:32",
+            audio: songData[key].audio,
+            wishlist: songData[key].wishlist,
+          }));
+
+          const regex = new RegExp(keywordDefault, "i");
+          songsArray = songsArray.filter(
+            (item) => regex.test(item.title) || regex.test(item.singer)
+          );
+
+          setDataFinal(songsArray);
+        }
+      });
     });
   }, [keywordDefault]);
   console.log("Data final:", dataFinal);

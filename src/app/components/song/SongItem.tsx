@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { MdFavorite } from "react-icons/md";
 import ButtonPlay from "../button/ButtonPlay";
+import ButtonHeart from "../button/ButtonHeart";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SongItem(props: any) {
-  const { id, image, title, singer, listen, link, audio } = props;
+  const { id, image, title, singer, listen, link } = props;
 
   return (
     <>
@@ -41,9 +41,7 @@ export default function SongItem(props: any) {
             {...props}
             className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px] inner-button-play"
           />
-          <button className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px]">
-            <MdFavorite />
-          </button>
+          <ButtonHeart {...props} />
         </div>
       </div>
     </>

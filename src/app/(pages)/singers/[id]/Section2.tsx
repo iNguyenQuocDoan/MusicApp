@@ -5,37 +5,53 @@ import SongItem2 from "../../../components/song/SongItem2";
 import Title from "../../../components/title/Title";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
+import { getSingerNames } from "@/app/utils/songUtils";
 
 export default function Section2(props: { id: string }) {
   const { id } = props;
-  const [dataFinal, setDataFinal] = useState<any>();
+  const [dataFinal, setDataFinal] = useState<any[]>([]);
 
   useEffect(() => {
     const songsRef = ref(dbFirebase, "songs");
-    onValue(songsRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        // Lặp qua mảng singerId xong tìm bản ghi ca sĩ có id đó
-        // Object.keys(data) để lặp qua từ key của object data
-        let songsArray = Object.keys(data).map((key) => ({
-          id: key,
-          image: data[key].image,
-          title: data[key].title,
-          singer: "Hồ Quang Hiếu, Huỳnh Văn",
-          listen: data[key].listen,
-          singerId: data[key].singerId,
-          categoryId: data[key].categoryId,
-          time: "4:32",
-          audio: data[key].audio,
-          wishlist: data[key].wishlist,
-        }));
-        // Lọc các bài hát theo ca sĩ
-        songsArray = songsArray.filter((item) => item.singerId.includes(id));
+    const singersRef = ref(dbFirebase, "singers");
 
-        setDataFinal(songsArray);
-      }
+    // Lấy dữ liệu singers trước
+    onValue(singersRef, (singerSnapshot) => {
+      const singerData = singerSnapshot.val();
+
+      // Sau đó lấy dữ liệu songs
+      onValue(songsRef, (songSnapshot) => {
+        const songData = songSnapshot.val();
+        if (songData && singerData) {
+          // Lặp qua mảng singerId xong tìm bản ghi ca sĩ có id đó
+          // Object.keys(data) để lặp qua từ key của object data
+          let songsArray = Object.keys(songData).map((key) => ({
+            id: key,
+            image: songData[key].image,
+            title: songData[key].title,
+            singer: getSingerNames(songData[key].singerId, singerData),
+            listen: songData[key].listen,
+            singerId: songData[key].singerId,
+            categoryId: songData[key].categoryId,
+            time: "4:32",
+            audio: songData[key].audio,
+            wishlist: songData[key].wishlist,
+          }));
+
+          // Lọc các bài hát theo ca sĩ
+          songsArray = songsArray.filter((item) => {
+            if (Array.isArray(item.singerId)) {
+              return item.singerId.includes(id);
+            } else {
+              return item.singerId === id;
+            }
+          });
+
+          setDataFinal(songsArray);
+        }
+      });
     });
-  }, []);
+  }, [id]);
 
   return (
     <>

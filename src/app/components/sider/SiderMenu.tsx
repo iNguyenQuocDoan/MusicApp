@@ -15,6 +15,7 @@ import SiderMenuItem from "./SiderMenuItem";
 export default function SiderMenu() {
   const [isLogin, setIsLogin] = useState<boolean>(false); // Khởi tạo với false thay vì undefined
 
+  // Kiểm tra trạng thái đăng nhập
   useEffect(() => {
     onAuthStateChanged(authFirebase, (user) => {
       if (user) {

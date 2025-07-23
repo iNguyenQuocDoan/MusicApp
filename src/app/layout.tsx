@@ -4,6 +4,7 @@ import "./globals.css";
 import Search from "./components/search/Search";
 import Sider from "./components/sider/Sider";
 import Play from "./components/play/Play";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Project 5",
@@ -24,7 +25,10 @@ export default function RootLayout({
               <Sider />
             </div>
             <div className="flex-1 ml-[20px]">
-              <Search />
+              <Suspense>
+                <Search />
+              </Suspense>
+
               <main className="mb-[130px] mt-[30px]"> {children} </main>
             </div>
           </div>

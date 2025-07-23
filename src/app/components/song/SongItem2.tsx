@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import Link from "next/link";
-import { FaPlay } from "react-icons/fa";
-import { MdFavorite } from "react-icons/md";
+
 import ButtonPlay from "../button/ButtonPlay";
+import ButtonHeart2 from "../button/ButtonHeart2";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SongItem2(props: any) {
@@ -49,9 +49,7 @@ export default function SongItem2(props: any) {
           <div className="font-[400] text-[14px] text-white mr-[18px]">
             {time}
           </div>
-          <button className="text-[20px] text-white">
-            <MdFavorite />
-          </button>
+          <ButtonHeart2 {...props} />
         </div>
       </div>
     </>
