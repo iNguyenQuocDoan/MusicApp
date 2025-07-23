@@ -42,7 +42,7 @@ export default function Search() {
       }
     });
   }, [keywordDefault]);
-
+  console.log("Data final:", dataFinal);
   console.log("Search params:", keywordDefault);
 
   const handleSearch = (event: any) => {

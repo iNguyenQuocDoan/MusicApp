@@ -1,39 +1,36 @@
-import SongItem2 from "../../../components/song/SongItem2";
-import Title from "../../../components/title/Title";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+import CardInfo from "@/app/components/card/CardInfo";
+import { dbFirebase } from "@/app/firebaseConfig";
+import { onValue, ref } from "firebase/database";
+import { useEffect, useState } from "react";
 
-export default function Section1() {
-  const data = [
-    {
-      image: "/Banner/image7.png",
-      title: "bai hat 1",
-      singer: "singer 1",
-      time: "11",
-    },
-    {
-      image: "/Banner/image7.png",
-      title: "bai hat 2",
-      singer: "singer 2",
-      time: "22",
-    },
-    {
-      image: "/Banner/image7.png",
-      title: "bai hat 3",
-      singer: "singer 3",
-      time: "33",
-    },
-  ];
+export default function Section1(props: { id: string }) {
+  const { id } = props; // Lấy id từ props nếu cần sử dụng
+  const [dataFinal, setDataFinal] = useState<any>([]);
+
+  useEffect(() => {
+    const categoryRef = ref(dbFirebase, "singers" + `/${id}`);
+    onValue(categoryRef, (snapshot) => {
+      const resData = snapshot.val();
+      if (resData) {
+        setDataFinal({
+          image: resData.image,
+          title: resData.title,
+          description: resData.description,
+          link: `/singers/${id}`,
+          id: id,
+        });
+      }
+    });
+  }, []);
   return (
     <>
-      <div className="mt-[30px]">
-        <Title text="Danh Sach Bai Hat" />
-        {/* List */}
-        <div className="grid grid-cols-1 gap-[10px]">
-          {/* Item */}
-          {data.map((item, index) => (
-            <SongItem2 key={index} {...item} />
-          ))}
-        </div>
-      </div>
+      <CardInfo
+        image={dataFinal.image}
+        title={dataFinal.title}
+        description={dataFinal.description}
+      />
     </>
   );
 }

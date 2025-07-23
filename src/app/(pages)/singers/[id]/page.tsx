@@ -1,20 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CardInfo from "../../../components/card/CardInfo";
 import Section1 from "./Section1";
+import Section2 from "./Section2";
 
-export default function SingerDetailPage() {
+export default async function SingerDetailPage({ params }: any) {
+  const { id } = await params; // Lấy id từ params
+  console.log(id, "id");
   return (
     <>
       {/* Card info */}
-      <CardInfo
-        image="/Banner/image8.png"
-        title="Tùng lùn"
-        description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, quae
-      provident qui cum impedit unde repellendus. Aut quisquam quos quibusdam
-      pariatur dolor repellat alias deserunt autem. Soluta quam aut dicta?"
-      />
-
+      <Section1 id={id} />
       {/* Section1 - danh sách bài hát*/}
-      <Section1 />
+      <Section2 id={id} />
     </>
   );
 }

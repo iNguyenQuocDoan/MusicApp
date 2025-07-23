@@ -96,12 +96,14 @@ export default function Section1() {
               <>
                 {dataFinal.map((item: any) => (
                   <SongItem
+                    id={item.id}
                     key={item.id}
                     image={item.image}
                     title={item.title}
                     singer={item.singer}
                     listen={item.listen}
                     link={item.link}
+                    audio={item.audio}
                   />
                 ))}
               </>
