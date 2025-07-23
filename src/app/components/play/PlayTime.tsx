@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 export default function PlayTime() {
-  // tua
+  // tuagit
   const handleChange = (event: any) => {
     const time = parseFloat(event.target.value);
     const elementAudio: any = document.querySelector(
