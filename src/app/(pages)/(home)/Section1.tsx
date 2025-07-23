@@ -91,7 +91,7 @@ export default function Section1() {
           <Title text="Nghe Nhieu" />
           {/* item */}
 
-          <div className="grid grid-cols-1 gap-[10px]">
+          <div className="grid grid-cols-1 gap-[10px]" song-list="">
             {dataFinal && (
               <>
                 {dataFinal.map((item: any) => (

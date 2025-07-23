@@ -6,11 +6,14 @@ import ButtonPlay from "../button/ButtonPlay";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SongItem(props: any) {
-  const { image, title, singer, listen, link, audio } = props;
+  const { id, image, title, singer, listen, link, audio } = props;
 
   return (
     <>
-      <div className="rounded-[15px] bg-[#212121] p-[10px] flex items-center">
+      <div
+        className="rounded-[15px] bg-[#212121] p-[10px] flex items-center"
+        data-song={id}
+      >
         <div className="aspect-square truncate w-[76px] h-[76px] mr-[10px] relative">
           <Image
             src={image}
@@ -36,7 +39,7 @@ export default function SongItem(props: any) {
         <div className="">
           <ButtonPlay
             {...props}
-            className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px]"
+            className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px] inner-button-play"
           />
           <button className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px]">
             <MdFavorite />

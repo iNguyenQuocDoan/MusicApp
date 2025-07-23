@@ -8,8 +8,8 @@ export default function PlayActions() {
     const elementPlayAudio = document.querySelector(".play-audio");
     if (elementPlayAudio) {
       const elementButtonPlay: any =
-        document.querySelector(".inner-button-play");
-      const elementAudio: any = document.querySelector(".inner-audio");
+        elementPlayAudio.querySelector(".inner-button-play");
+      const elementAudio: any = elementPlayAudio.querySelector(".inner-audio");
 
       if (elementButtonPlay?.classList.contains("play")) {
         elementButtonPlay.classList.remove("play");
@@ -20,11 +20,69 @@ export default function PlayActions() {
       }
     }
   };
+
+  const handlePrevious = () => {
+    const elementPlayAudio: any = document.querySelector(".play-audio");
+    const idSongCurrent = elementPlayAudio.getAttribute("song-id");
+    console.log("Current song ID:", idSongCurrent);
+
+    if (idSongCurrent) {
+      const songList: any = document.querySelector("[song-list]");
+
+      if (songList) {
+        const elementSongCurrent = songList.querySelector(
+          `[data-song="${idSongCurrent}"]`
+        );
+
+        const elementSongPrevious = elementSongCurrent?.previousElementSibling;
+
+        if (elementSongPrevious) {
+          const buttonPlay =
+            elementSongPrevious.querySelector(".inner-button-play");
+
+          if (buttonPlay) {
+            buttonPlay.click();
+          }
+        } else {
+          console.log("No previous song available");
+        }
+      }
+    }
+  };
+
+  const handleNext = () => {
+    const elementPlayAudio: any = document.querySelector(".play-audio");
+    const idSongCurrent = elementPlayAudio.getAttribute("song-id");
+    console.log("Current song ID:", idSongCurrent);
+
+    if (idSongCurrent) {
+      const songList: any = document.querySelector("[song-list]");
+
+      if (songList) {
+        const elementSongCurrent = songList.querySelector(
+          `[data-song="${idSongCurrent}"]`
+        );
+
+        const elementSongNext = elementSongCurrent?.nextElementSibling;
+
+        if (elementSongNext) {
+          const buttonPlay =
+            elementSongNext.querySelector(".inner-button-play");
+
+          if (buttonPlay) {
+            buttonPlay.click();
+          }
+        } else {
+          console.log("No next song available");
+        }
+      }
+    }
+  };
   return (
     <>
       <div className="flex items-center justify-center">
         <button className="text-white text-[16px]">
-          <FaStepBackward />
+          <FaStepBackward onClick={handlePrevious} />
         </button>
         <button
           onClick={handlePlay}
@@ -33,7 +91,7 @@ export default function PlayActions() {
           <CiPlay1 className="inner-icon-play" />
           <CiPause1 className="inner-icon-pause" />
         </button>
-        <button className="text-white text-[16px]">
+        <button className="text-white text-[16px]" onClick={handleNext}>
           <FaStepForward />
         </button>
       </div>
