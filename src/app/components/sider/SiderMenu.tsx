@@ -1,17 +1,30 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { authFirebase } from "@/app/firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
+
+import { useEffect, useState } from "react";
 import { FaMusic } from "react-icons/fa";
 import { GiPerson } from "react-icons/gi";
 import { IoIosLogOut } from "react-icons/io";
 import { MdFavorite, MdOutlinePersonAdd } from "react-icons/md";
 import { TbLogin } from "react-icons/tb";
 import { TiHomeOutline } from "react-icons/ti";
+import SiderMenuItem from "./SiderMenuItem";
 
 export default function SiderMenu() {
-  const pathName = usePathname(); // lay path name
-  console.log(pathName);
+  const [isLogin, setIsLogin] = useState<boolean>(false); // Khởi tạo với false thay vì undefined
+
+  useEffect(() => {
+    onAuthStateChanged(authFirebase, (user) => {
+      if (user) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    });
+  }, []);
+
   const menu = [
     {
       icon: <TiHomeOutline />,
@@ -32,21 +45,25 @@ export default function SiderMenu() {
       icon: <MdFavorite />,
       title: "Bài hát yêu thích",
       link: "/wishlist",
+      isLogin: true, // Chỉ hiển thị nếu đã đăng nhập
     },
     {
       icon: <IoIosLogOut />,
       title: "Đăng xuất",
       link: "/logout",
+      isLogin: true,
     },
     {
       icon: <TbLogin />,
       title: "Đăng nhập",
       link: "/login",
+      isLogin: false, // Chỉ hiển thị nếu chưa đăng nhập
     },
     {
       icon: <MdOutlinePersonAdd />,
       title: "Đăng kí",
       link: "/register",
+      isLogin: false,
     },
   ];
   return (
@@ -54,18 +71,7 @@ export default function SiderMenu() {
       <nav className="py-[30px] px-[20px]">
         <ul className="">
           {menu.map((item, index) => (
-            <li className="mb-[30px]" key={index}>
-              <Link
-                href={item.link}
-                className={
-                  " flex items-center hover:text-[#00ADEF] capitalize " +
-                  (pathName === item.link ? "text-[#00ADEF]" : "text-white")
-                }
-              >
-                <span className="text-[20px] mr-[20px]">{item.icon}</span>
-                <span className="font-[700]">{item.title}</span>
-              </Link>
-            </li>
+            <SiderMenuItem key={index} item={item} isLogin={isLogin} />
           ))}
         </ul>
       </nav>
