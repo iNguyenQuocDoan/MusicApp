@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaPlay } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
+import ButtonPlay from "../button/ButtonPlay";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SongItem2(props: any) {
@@ -13,9 +14,10 @@ export default function SongItem2(props: any) {
       <div className="flex items-center justify-between bg-[#212121] py-[10px] px-[18px] rounded-[15px]">
         {/* Left */}
         <div className="flex items-center w-[40%]">
-          <button className="text-[20px] text-white">
+          {/* <button className="text-[20px] text-white">
             <FaPlay />
-          </button>
+          </button> */}
+          <ButtonPlay {...props} className="text-[20px] text-white" />
           <div className="aspect-square w-[42px] h-[42px] rounded-[8px] truncate mx-[12px] relative">
             <Image
               src={image}
