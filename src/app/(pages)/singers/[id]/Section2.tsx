@@ -56,7 +56,7 @@ export default function Section2(props: { id: string }) {
   return (
     <>
       <div className="mt-[30px]">
-        <Title text="Danh Sach Bai Hat" />
+        <Title text="Danh Sách Bài Hát" />
         {/* List */}
         <div className="grid grid-cols-1 gap-[10px]">
           {/* Item */}

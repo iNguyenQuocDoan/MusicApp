@@ -29,12 +29,12 @@ export default function SiderMenu() {
   const menu = [
     {
       icon: <TiHomeOutline />,
-      title: "Trang chu",
+      title: "Trang chủ",
       link: "/",
     },
     {
       icon: <FaMusic />,
-      title: "Danh muc bai hat",
+      title: "Danh mục bài hát",
       link: "/categories",
     },
     {

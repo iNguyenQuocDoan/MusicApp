@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
+import { IoVolumeMediumSharp } from "react-icons/io5";
+
 export default function PlayVolume() {
   const handleChange = (event: any) => {
     const elementPlayAudio = document.querySelector(".play-audio");
@@ -13,7 +16,7 @@ export default function PlayVolume() {
   return (
     <>
       <div className="w-[184px] flex items-end inner-volume">
-        {" "}
+        <IoVolumeMediumSharp className="text-[#00ADEF] mr-2" />
         <div className="mt-[11px] relative">
           <div className="h-[4px] w-0 bg-[#00ADEF] rounded-[50px] absolute left-0 top-[13px] inner-current"></div>
           <input

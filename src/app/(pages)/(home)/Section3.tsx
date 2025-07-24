@@ -6,9 +6,11 @@ import Title from "../../components/title/Title";
 import { onValue, ref } from "firebase/database";
 import { dbFirebase } from "@/app/firebaseConfig";
 import CardItem from "../../components/Card/CardItem";
+import SkeletonGrid from "../../components/skeleton/SkeletonGrid";
 
 export default function Section3() {
   const [dataFinal, setDataFinal] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const singersRef = ref(dbFirebase, "singers");
@@ -25,9 +27,20 @@ export default function Section3() {
         }));
         singersArr = singersArr.slice(0, 5); // Lấy 5 ca sĩ nổi bật
         setDataFinal(singersArr);
+        setLoading(false);
       }
     });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="mt-[30px]">
+        <Title text={"Ca Sĩ Nổi Bật"} />
+        <SkeletonGrid count={5} />
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="mt-[30px]">

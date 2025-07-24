@@ -6,7 +6,7 @@ import Title from "../../components/title/Title";
 import { dbFirebase } from "@/app/firebaseConfig";
 import { onValue, ref } from "firebase/database";
 import Image from "next/image";
-import SkeletonHomePage from "../../components/skeleton/SkeletonHomePage";
+import SkeletonFeaturedSection from "../../components/skeleton/SkeletonFeaturedSection";
 
 export default function Section1() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -65,7 +65,7 @@ export default function Section1() {
   console.log(dataFinal);
 
   if (loading) {
-    return <SkeletonHomePage />;
+    return <SkeletonFeaturedSection />;
   }
 
   return (
@@ -96,7 +96,7 @@ export default function Section1() {
           </div>
         </div>
         <div className="ml-[20px] flex-1">
-          <Title text="Nghe Nhieu" />
+          <Title text="Nghe Nhiều" />
           {/* item */}
 
           <div className="grid grid-cols-1 gap-[10px]" song-list="">

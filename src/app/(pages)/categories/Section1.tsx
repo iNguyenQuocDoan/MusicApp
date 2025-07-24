@@ -35,7 +35,7 @@ export default function Section1() {
   return (
     <>
       <div className="mt-[30px]">
-        <Title text={"Danh Muc Bai Hat"} />
+        <Title text={"Danh Mục Bài Hát"} />
         {loading ? (
           <SkeletonGrid count={10} />
         ) : (
