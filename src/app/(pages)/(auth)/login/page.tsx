@@ -38,7 +38,7 @@ export default function LoginPage() {
               type="email"
               name="email"
               id="email"
-              placeholder="Ví dụ abc@gmail.com"
+              placeholder="abc@gmail.com hoặc là tự đăng kí"
               className="h-[50px] w-full bg-white rounded-[6px] px-[16px] font-[600] text-[14px] outline-none"
               required={true}
             />
@@ -56,6 +56,7 @@ export default function LoginPage() {
               type="password"
               name="password"
               id="password"
+              placeholder="password: 123456"
               className="h-[50px] w-full bg-white rounded-[6px] px-[16px] font-[600] text-[14px] outline-none"
               required={true}
             />
